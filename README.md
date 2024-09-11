@@ -1,38 +1,25 @@
-<br />
-<p align="center">
-  <a href="https://www.coverwallet.com/">
-    <img src="images/logo.png" alt="Logo" width="400" height="100">
-  </a>
-
-  <h3 align="center">pr-labeler</h3>
-
-  <p align="center">
-    Add label to the pull request depending on the number of changes and the files excluded from the counting
-  </p>
-</p>
-
 ## Table of Contents
 
-* [Usage](#usage)
-* [Inputs](#inputs)
-* [Assumptions](#assumptions)
-* [License](#license)
+- [Usage](#usage)
+- [Inputs](#inputs)
+- [Assumptions](#assumptions)
+- [License](#license)
 
 ## Usage
 
-You can create a `.github/workflows/pr-labeler.yml` file:
+You can create a `.github/workflows/actions-pr-labeler.yml` file:
 
 ```yaml
-name: pr-labeler
+name: actions-pr-labeler
 
 on: [pull_request]
 
 jobs:
-  pr-labeler:
+  actions-pr-labeler:
     runs-on: ubuntu-latest
     name: Label the PR size
     steps:
-      - uses: coverwallet/pr-labeler@v1.2.1
+      - uses: FTAPI-Software/actions-pr-labeler@v1.2.1
         with:
           xs_max_size: '10'
           s_max_size: '100'
@@ -41,19 +28,17 @@ jobs:
           exclude_files: '.txt'
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 ```
 
 ## Inputs
 
-
-| Name | Description | Required |
-|------|-------------|----------|
-| xs_max_size | The maximum number of lines changed for the label named xs | true |
-| s_max_size | The maximum number of lines changed for the label named s | true |
-| m_max_size | The maximum number of lines changed for the label named m | true |
-| l_max_size | The maximum number of lines changed for the label named l | true |
-| exclude_files | The regular expression of the type of file or files that we want to exclude from the counting of changes | true |
+| Name          | Description                                                                                              | Required |
+| ------------- | -------------------------------------------------------------------------------------------------------- | -------- |
+| xs_max_size   | The maximum number of lines changed for the label named xs                                               | true     |
+| s_max_size    | The maximum number of lines changed for the label named s                                                | true     |
+| m_max_size    | The maximum number of lines changed for the label named m                                                | true     |
+| l_max_size    | The maximum number of lines changed for the label named l                                                | true     |
+| exclude_files | The regular expression of the type of file or files that we want to exclude from the counting of changes | true     |
 
 ## Assumptions
 
